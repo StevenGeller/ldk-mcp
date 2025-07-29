@@ -1,0 +1,41 @@
+{
+  "name": "ldk-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Lightning Development Kit (LDK) - Real-time Lightning expertise for iOS wallet development",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "jest"
+  },
+  "keywords": ["mcp", "ldk", "lightning", "bitcoin", "ios", "wallet"],
+  "author": "Steven Geller",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenGeller/ldk-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StevenGeller/ldk-mcp/issues"
+  },
+  "homepage": "https://github.com/StevenGeller/ldk-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "axios": "^1.7.9",
+    "bitcoinjs-lib": "^6.1.6",
+    "bolt11": "^1.4.1",
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "ecpair": "^2.1.0",
+    "tiny-secp256k1": "^2.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.2",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.14"
+  }
+}
