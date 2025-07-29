@@ -269,13 +269,13 @@ npm test -- --testNamePattern="Lightning payment"
 
 ### Swift/iOS Integration
 - [LDK Swift Bindings Documentation](https://lightningdevkit.org/docs)
-- [iOS Background Processing Guide](./docs/ios-background.md)
-- [Security Best Practices](./docs/security.md)
+- [iOS Background Processing Guide](docs/ios-background.md)
+- [Security Best Practices](docs/security.md)
 
 ### Lightning Development
-- [Channel Management](./docs/channels.md)
-- [Payment Routing](./docs/routing.md)
-- [Fee Estimation](./docs/fees.md)
+- [Channel Management](docs/channels.md)
+- [Payment Routing](docs/routing.md)
+- [Fee Estimation](docs/fees.md)
 
 ## 🤝 Contributing
 
