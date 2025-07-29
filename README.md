@@ -2,6 +2,10 @@
 
 Real-time Lightning Development Kit (LDK) expertise for accelerating iOS Lightning wallet development. This MCP server provides instant access to LDK APIs, Swift patterns with proper Bindings namespace usage, comprehensive event handling, NetworkGraph with RapidGossipSync, and multiple chain synchronization methods.
 
+<a href="https://glama.ai/mcp/servers/@StevenGeller/ldk-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@StevenGeller/ldk-mcp/badge" alt="LDK Server MCP server" />
+</a>
+
 ## 🚀 Features
 
 ### Lightning Development Tools
