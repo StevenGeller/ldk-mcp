@@ -25,11 +25,9 @@ export const decodeInvoiceTool: Tool = {
           type: 'text',
           text: JSON.stringify({
             success: true,
-            invoice: {
-              ...decoded,
-              amountSats: decoded.amountMsat ? Math.floor(decoded.amountMsat / 1000) : null,
-              isExpired: decoded.timestamp + (decoded.expiry || 3600) < Date.now() / 1000
-            },
+            ...decoded,
+            amountSats: decoded.amountMsat ? Math.floor(decoded.amountMsat / 1000) : null,
+            isExpired: decoded.timestamp + (decoded.expiry || 3600) < Date.now() / 1000,
             swiftExample: `
 // Swift code to decode and display invoice in your iOS app
 import SwiftUI

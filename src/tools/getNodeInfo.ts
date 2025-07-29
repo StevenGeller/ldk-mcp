@@ -20,22 +20,22 @@ export const getNodeInfoTool: Tool = {
           type: 'text',
           text: JSON.stringify({
             success: true,
-            node: {
+            nodeInfo: {
               nodeId: nodeInfo.nodeId,
               alias: nodeInfo.alias,
               version: nodeInfo.version,
               blockHeight: nodeInfo.blockHeight,
-              syncedToChain: nodeInfo.syncedToChain
+              syncedToChain: nodeInfo.syncedToChain,
+              channels: {
+                total: nodeInfo.numChannels,
+                usable: nodeInfo.numUsableChannels
+              },
+              balance: {
+                totalSats: Math.floor(balance.totalMsat / 1000),
+                spendableSats: Math.floor(balance.spendableMsat / 1000)
+              },
+              peers: nodeInfo.numPeers
             },
-            channels: {
-              total: nodeInfo.numChannels,
-              usable: nodeInfo.numUsableChannels
-            },
-            balance: {
-              totalSats: Math.floor(balance.totalMsat / 1000),
-              spendableSats: Math.floor(balance.spendableMsat / 1000)
-            },
-            peers: nodeInfo.numPeers,
             swiftExample: `
 // Swift code to display node info in your iOS app
 import SwiftUI

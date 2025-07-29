@@ -31,7 +31,9 @@ export const keychainTestTool: Tool = {
         content: [{
           type: 'text',
           text: JSON.stringify({
-            ...result,
+            success: result.success,
+            message: result.message,
+            swiftExample: result.swiftCode,
             keyType: args.keyType,
             recommendations: [
               'Use kSecAttrAccessibleWhenUnlockedThisDeviceOnly for maximum security',

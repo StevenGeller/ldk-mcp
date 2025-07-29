@@ -30,7 +30,9 @@ export const biometricAuthTool: Tool = {
         content: [{
           type: 'text',
           text: JSON.stringify({
-            ...result,
+            success: result.success,
+            message: result.message,
+            swiftExample: result.swiftCode,
             operation: args.operation,
             requireAuth: args.requireAuth,
             securityGuidelines: [

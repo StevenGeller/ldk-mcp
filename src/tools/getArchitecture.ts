@@ -404,7 +404,7 @@ class PerformanceMonitor {
           text: JSON.stringify({
             success: true,
             topic: args.topic,
-            architecture: guide
+            content: guide
           }, null, 2)
         }]
       };

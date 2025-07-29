@@ -27,7 +27,12 @@ export class LightningService {
   constructor(network: 'mainnet' | 'testnet' | 'regtest' = 'testnet') {
     this.network = network === 'mainnet' ? bitcoin.networks.bitcoin : 
                    network === 'testnet' ? bitcoin.networks.testnet :
-                   bitcoin.networks.regtest as bitcoin.Network;
+                   bitcoin.networks.regtest;
+    
+    // Validate network was set correctly
+    if (!this.network) {
+      this.network = bitcoin.networks.testnet;
+    }
     
     // Initialize mock node info
     this.nodeInfo = {
@@ -55,9 +60,16 @@ export class LightningService {
     const preimage = crypto.randomBytes(32);
     const paymentHash = crypto.createHash('sha256').update(preimage).digest();
     
+    // Create network object compatible with bolt11
+    const bolt11Network = {
+      bech32: this.network.bech32,
+      pubKeyHash: this.network.pubKeyHash,
+      scriptHash: this.network.scriptHash,
+      validWitnessVersions: [0, 1]
+    };
+
     const invoice: bolt11.PaymentRequestObject = {
-      network: (this.network === bitcoin.networks.bitcoin ? 'bc' : 
-                this.network === bitcoin.networks.testnet ? 'tb' : 'bcrt') as any,
+      network: bolt11Network as any,
       timestamp: Math.floor(Date.now() / 1000),
       tags: [
         { tagName: 'payment_hash', data: paymentHash.toString('hex') },

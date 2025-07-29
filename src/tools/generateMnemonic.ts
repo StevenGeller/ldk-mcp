@@ -14,13 +14,25 @@ export const generateMnemonicTool: Tool = {
         enum: [128, 256],
         description: 'Mnemonic strength (128 = 12 words, 256 = 24 words)',
         default: 256
+      },
+      wordCount: {
+        type: 'number',
+        enum: [12, 24],
+        description: 'Number of words in mnemonic (12 or 24)',
+        default: 24
       }
     }
   },
   execute: async (args: any): Promise<ToolResult> => {
     try {
-      const mnemonic = walletService.generateMnemonic(args.strength || 256);
-      const seed = walletService.mnemonicToSeed(mnemonic);
+      // Convert wordCount to strength if provided
+      let strength = args.strength;
+      if (args.wordCount) {
+        strength = args.wordCount === 12 ? 128 : 256;
+      }
+      
+      const mnemonic = walletService.generateMnemonic(strength || 256);
+      const seedBuffer = walletService.mnemonicToSeed(mnemonic);
       const wordCount = mnemonic.split(' ').length;
 
       return {
@@ -30,7 +42,7 @@ export const generateMnemonicTool: Tool = {
             success: true,
             mnemonic,
             wordCount,
-            seedHex: seed.toString('hex'),
+            seed: seedBuffer.toString('hex'),
             swiftExample: `
 // Swift code for secure mnemonic generation in your iOS app
 import SwiftUI

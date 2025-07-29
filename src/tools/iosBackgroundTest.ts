@@ -25,7 +25,9 @@ export const backgroundTestTool: Tool = {
         content: [{
           type: 'text',
           text: JSON.stringify({
-            ...result,
+            success: result.success,
+            message: result.message,
+            swiftExample: result.swiftCode,
             taskType: args.taskType,
             bestPractices: [
               'Register background tasks in Info.plist',
